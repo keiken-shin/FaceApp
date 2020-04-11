@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const SignIn = ({ onRouteChange, setBox, loadUser }) => {
+const SignIn = ({ onRouteChange, loadUser }) => {
 
     const [ signInEmail, setSignInEmail ] = useState('');
     const [ signInPassword, setSignInPassword ] = useState('');
@@ -26,8 +26,7 @@ const SignIn = ({ onRouteChange, setBox, loadUser }) => {
                             });
             const user = request.data;
 
-            if(user){
-                setBox({});
+            if(user.id){
                 loadUser(user);
                 onRouteChange('home');
             }

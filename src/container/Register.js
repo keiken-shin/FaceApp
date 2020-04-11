@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Register = ({ onRouteChange, setBox, loadUser }) => {
+const Register = ({ onRouteChange, loadUser }) => {
 
     const [ name, setName ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -32,8 +32,7 @@ const Register = ({ onRouteChange, setBox, loadUser }) => {
                             });
             const user = request.data;
 
-            if(user){
-                setBox({});
+            if(user.id){
                 loadUser(user);
                 onRouteChange('home');
             }

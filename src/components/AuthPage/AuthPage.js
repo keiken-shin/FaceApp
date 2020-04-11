@@ -1,17 +1,24 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 import Goddess from './Goddess.jpg';
-import Clarifai from 'clarifai';
+import axios from 'axios';
 
 
 const AuthPage = ({particlesParams, children, app, facelocation, displayFaceBox, box}) => {
 
   // Detecting Face
-  const onDetect = async () => {
-    try{
-    const appPredict = await app.models.predict(Clarifai.FACE_DETECT_MODEL, 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80')
-    displayFaceBox(facelocation(appPredict))
-    }catch(err) {console.log(err)};
+  const onDetect = () => {
+    const input = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80';
+    axios({
+        method: 'post',
+        url: 'http://localhost:8000/imageurl',
+        data: {
+          input: input
+        }
+    }).then(res => {
+        displayFaceBox(facelocation(res.data))
+    })
+    .catch(console.log)
   }
 
     return (

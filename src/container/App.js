@@ -1,30 +1,27 @@
 import React, { useState } from 'react';
-import Clarifai from 'clarifai';
 import Header from '../components/Header/Header';
 import ImageForm from '../components/ImageForm/ImageForm';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import AuthPage from '../components/AuthPage/AuthPage';
-import SignIn from '../components/SignIn/SignIn';
-import Register from '../components/Register/Register';
+import SignIn from './SignIn';
+import Register from './Register';
 import axios from 'axios';
 
-const app = new Clarifai.App({
-  apiKey: '5abfae422e084e6dbe1f92a4472e739a'
- });
  
+const initialUser = {
+  id: '',
+  name: '',
+  email: '',
+  enteries: 0,
+  joined: ''
+}
 
 const App = () => {
   const [ route, setRoute ] = useState('signin');
   const [ input, setInput ] = useState('');
   const [ imgURL, setImgURL ] = useState('');
   const [ box, setBox ] = useState({});
-  const [ user, setUser ] = useState({
-      id: '',
-      name: '',
-      email: '',
-      enteries: 0,
-      joined: ''
-  });
+  const [ user, setUser ] = useState(initialUser);
 
   const particlesParams = {
     "particles": {
@@ -149,6 +146,8 @@ const App = () => {
 
   // Route Change
   const onRouteChange = (route) => {
+    if(route === 'signin') setUser(initialUser);
+    if(route === 'home') setBox({});
     setRoute(route);
   }
 
@@ -182,9 +181,14 @@ const App = () => {
   // Detecting Face
   const onDetect = async () => {
     setImgURL(input);
-    try{
-    const appPredict = await app.models.predict(Clarifai.FACE_DETECT_MODEL, input)
-    if(appPredict){
+    axios({
+      method: 'post',
+      url: 'http://localhost:8000/imageurl',
+      data: {
+        input: input
+      }
+    })
+    .then(res => {
       axios({
         method: 'put',
         url: 'http://localhost:8000/image',
@@ -193,10 +197,11 @@ const App = () => {
         }
       }).then(count => setUser(prevState => {
                           return {...prevState, enteries: count.data}
-                        }));
-    }
-    displayFaceBox(facelocation(appPredict))
-    }catch(err) {console.log(err)};
+                        })
+        ).catch(console.log)
+      displayFaceBox(facelocation(res.data));
+    })
+    .catch(console.log)
   }
 
   return (
@@ -220,14 +225,13 @@ const App = () => {
           </main>
         : <AuthPage 
                 particlesParams={particlesParams} 
-                app={app}
                 facelocation={facelocation}
                 displayFaceBox={displayFaceBox}
                 box={box}
             >
             { route === 'signin'
-              ? <SignIn onRouteChange={onRouteChange} setBox={setBox} loadUser={loadUser} />
-              : <Register onRouteChange={onRouteChange} setBox={setBox} loadUser={loadUser} />
+              ? <SignIn onRouteChange={onRouteChange} loadUser={loadUser} />
+              : <Register onRouteChange={onRouteChange} loadUser={loadUser} />
             }
           </AuthPage>
         
