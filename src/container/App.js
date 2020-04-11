@@ -183,7 +183,7 @@ const App = () => {
     setImgURL(input);
     axios({
       method: 'post',
-      url: 'https://git.heroku.com/obscure-castle-66785.git/imageurl',
+      url: 'https://obscure-castle-66785.herokuapp.com//imageurl',
       data: {
         input: input
       }
@@ -191,7 +191,7 @@ const App = () => {
     .then(res => {
       axios({
         method: 'put',
-        url: 'https://git.heroku.com/obscure-castle-66785.git/image',
+        url: 'https://obscure-castle-66785.herokuapp.com//image',
         data: {
           id: user.id,
         }
