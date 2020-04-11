@@ -23,7 +23,7 @@ const Register = ({ onRouteChange, loadUser }) => {
         const register = async() => {
             const request = await axios({
                                 method: 'post',
-                                url: 'http://localhost:8000/register',
+                                url: 'https://git.heroku.com/obscure-castle-66785.git/register',
                                 data: {
                                     name: name,
                                     email: email,
