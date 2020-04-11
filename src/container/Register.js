@@ -23,7 +23,7 @@ const Register = ({ onRouteChange, loadUser }) => {
         const register = async() => {
             const request = await axios({
                                 method: 'post',
-                                url: 'https://obscure-castle-66785.herokuapp.com//register',
+                                url: 'https://obscure-castle-66785.herokuapp.com/register',
                                 data: {
                                     name: name,
                                     email: email,

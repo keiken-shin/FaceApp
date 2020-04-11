@@ -18,7 +18,7 @@ const SignIn = ({ onRouteChange, loadUser }) => {
         const login = async() => {
             const request = await axios({
                                 method: 'post',
-                                url: 'https://obscure-castle-66785.herokuapp.com//signin',
+                                url: 'https://obscure-castle-66785.herokuapp.com/signin',
                                 data: {
                                     email: signInEmail,
                                     password: signInPassword

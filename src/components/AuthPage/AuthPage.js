@@ -11,7 +11,7 @@ const AuthPage = ({particlesParams, children, app, facelocation, displayFaceBox,
     const input = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80';
     axios({
         method: 'post',
-        url: 'https://obscure-castle-66785.herokuapp.com//imageurl',
+        url: 'https://obscure-castle-66785.herokuapp.com/imageurl',
         data: {
           input: input
         }
