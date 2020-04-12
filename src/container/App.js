@@ -7,7 +7,7 @@ import SignIn from './SignIn';
 import Register from './Register';
 import axios from 'axios';
 
- 
+//  initial state for user
 const initialUser = {
   id: '',
   name: '',
