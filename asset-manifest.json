@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/FaceApp/static/css/main.234e32b7.chunk.css",
+    "main.js": "/FaceApp/static/js/main.2a23f872.chunk.js",
+    "main.js.map": "/FaceApp/static/js/main.2a23f872.chunk.js.map",
+    "runtime-main.js": "/FaceApp/static/js/runtime-main.fc447320.js",
+    "runtime-main.js.map": "/FaceApp/static/js/runtime-main.fc447320.js.map",
+    "static/js/2.83c7a6db.chunk.js": "/FaceApp/static/js/2.83c7a6db.chunk.js",
+    "static/js/2.83c7a6db.chunk.js.map": "/FaceApp/static/js/2.83c7a6db.chunk.js.map",
+    "index.html": "/FaceApp/index.html",
+    "precache-manifest.1152cf0f6c1dd0dfe51376490401ddf0.js": "/FaceApp/precache-manifest.1152cf0f6c1dd0dfe51376490401ddf0.js",
+    "service-worker.js": "/FaceApp/service-worker.js",
+    "static/css/main.234e32b7.chunk.css.map": "/FaceApp/static/css/main.234e32b7.chunk.css.map",
+    "static/js/2.83c7a6db.chunk.js.LICENSE.txt": "/FaceApp/static/js/2.83c7a6db.chunk.js.LICENSE.txt",
+    "static/media/Goddess.jpg": "/FaceApp/static/media/Goddess.a608061b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fc447320.js",
+    "static/js/2.83c7a6db.chunk.js",
+    "static/css/main.234e32b7.chunk.css",
+    "static/js/main.2a23f872.chunk.js"
+  ]
+}
